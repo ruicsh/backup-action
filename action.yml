@@ -1,5 +1,5 @@
-name: "Mirroring Repository"
-description: "Mirror a repository to another repository on GitHub, GitLab, BitBucket, AWS CodeCommit, etc."
+name: "Backup Repository"
+description: "Backup a repository using user:token auth."
 branding:
   icon: "archive"
   color: "blue"
