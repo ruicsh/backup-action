@@ -2,12 +2,12 @@
 set -eu
 
 main() {
-  mkdir -p ~/.ssh
-  echo "${INPUT_SSH_PRIVATE_KEY:?}" >~/.ssh/id_rsa
-  chmod 600 ~/.ssh/id_rsa
+  user=${INPUT_BITBUCKET_APP_USER}
+  token=${INPUT_BITBUCKET_APP_PASSWORD}
+  repo=${INPUT_TARGET_REPO}
+  target_repo_url="https://${user}:${token}@bitbucket.org/${repo}.git"
 
-  export GIT_SSH_COMMAND="ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -l ${INPUT_SSH_USERNAME}"
-  git remote add backup "${INPUT_TARGET_REPO_URL:?}"
+  git remote add backup "${target_repo_url}"
   git push --tags --force --prune backup "refs/remotes/origin/*:refs/heads/*"
 }
 

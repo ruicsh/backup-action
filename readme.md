@@ -14,6 +14,7 @@ jobs:
           fetch-depth: "0"
       - uses: ruicsh/backup-action@main
         with:
-          target_repo_url: git@bitbucket.org:<owner>/<repo>.git
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          bitbucket_app_user: ${{ secrets.BITBUCKET_APP_USER }}
+          bitbucket_app_password: ${{ secrets.BITBUCKET_APP_PASSWORD }}
+          target_repo: <owner>/<repo>
 ```
